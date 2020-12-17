@@ -22,11 +22,15 @@ for btc_dict in btc_data:
 
 #########################
 import pygal
+import math
 
 line_chart = pygal.Line(x_label_rotation=20,show_minor_x_labels=False)
 line_chart_title = '收盘价(￥)'
 line_chart.x_labels = dates
 N = 21      #x轴坐标每21天显示一次
 line_chart.x_labels_major = dates[::N]
-line_chart.add('收盘价',close)
-line_chart.render_to_file('收盘价折线图(￥).svg')
+line_chart.add('收盘价/10000',(x/10000 for x in close))
+close_log = [math.log10(_) for _ in close]
+#print(close_log)
+line_chart.add('log收盘价',close_log)
+line_chart.render_to_file('收盘价对数变换折线图(￥).svg')
