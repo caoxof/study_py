@@ -46,7 +46,7 @@ for repo_dict in repo_dicts:
 #    if repo_dict['description'] == None :
 #        print(repo_dict['name'])
 
-    repo_dicts.append(repo_dict)
+    plot_dicts.append(plot_dict)   ###====>>上版错误plot--repo
 
 
 #可视化
@@ -71,5 +71,5 @@ chart.title = 'Most-Starred Python Projects on Github'
 chart.x_labels = names
 #chart.add('',stars)
 chart.add('',plot_dicts)
-chart.render_to_file('python_repos1.svg')
+chart.render_to_file('python_repos01.svg')
 
